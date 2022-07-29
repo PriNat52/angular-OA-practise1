@@ -18,28 +18,29 @@ export class AppComponent implements OnInit {
 
   @ViewChild('input', { static: true })
   input!: ElementRef;
-  value!: string
-  array =[];
+  value!: string;
+  array = [];
 
   ngOnInit() {
-    
-    fromEvent(this.input.nativeElement, 'keyup').pipe(
-      debounceTime(500),
-      filter((_) => {
-        const key = this.input.nativeElement.value.trim();
-        this.array.push(key);
-        return key;
-      }),
-      tap((_)=>{
-        const key = this.input.nativeElement.value.trim();
-        console.log(key);
-      })
-    ).subscribe();
+    fromEvent(this.input.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(500),
+        filter((_) => {
+          const key = this.input.nativeElement.value.trim();
+          this.array.push(key);
+          return key;
+        }),
+        tap((_) => {
+          const key = this.input.nativeElement.value.trim();
+          console.log(key);
+        })
+      )
+      .subscribe();
   }
 
-  onDel(i:any){
-    for(let j=0;j<=this.array.length - 1; j++){
-      if(this.array[j] === i){
+  onDel(i: any) {
+    for (let j = 0; j <= this.array.length - 1; j++) {
+      if (this.array[j] === i) {
         this.array.splice(j--, 1);
       }
     }
