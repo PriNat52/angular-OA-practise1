@@ -1,0 +1,13 @@
+<hello name="{{ name }}"></hello>
+<p>Start editing to see some magic happen :)</p>
+
+<label>Add: </label><input type="text" placeholder="here" #input [(ngModel)]=value />
+
+
+<div *ngIf=array.length>
+  <ul *ngFor="let i of array">
+    <li>{{i}}
+      <button (click) = "onDel(i)">X</button>
+    </li>
+  </ul>
+</div>
